@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="INSTALLDIR">
+            <Component Id="cmpC6352196F8EAF63438ADFFCE02E38E41" Guid="{BDE0CBFA-7860-472C-BEC5-A0F93B9BE4E8}">
+                <File Id="filEE122B6288CDF41A8D80FE67B415E3B6" KeyPath="yes" Source="Files\AULGK.deps.json" />
+            </Component>
+            <Component Id="cmp8766751BFC2EE62883217A85EBCC19E3" Guid="{D23E56BB-519C-46FB-A9C4-8F7DDE1692D3}">
+                <File Id="filF803AD1C49036A1925BF3F8FACD8920C" KeyPath="yes" Source="Files\AULGK.dll" />
+            </Component>
+            <Component Id="cmp60CA72B405C2BD6DAA4CE7A706B69031" Guid="{24A94860-3B9F-403F-BB6C-3CD70282E73D}">
+                <File Id="filD5CC89915C587F7282817BEC325050E6" KeyPath="yes" Source="Files\AULGK.exe" />
+            </Component>
+            <Component Id="cmp11C4AC539AFF7DB49AA733C4330737F0" Guid="{769EEC8C-48C3-4E77-B493-BA57C28A0816}">
+                <File Id="filDED0419A44E856BFAFAD3913643A50BB" KeyPath="yes" Source="Files\AULGK.pdb" />
+            </Component>
+            <Component Id="cmpF6D452A0861CDD301D4C5F797A45F690" Guid="{F9E61F95-F199-4487-AA8E-F8773966FDE0}">
+                <File Id="fil94C23079CCA792FF023567953B68438D" KeyPath="yes" Source="Files\AULGK.runtimeconfig.json" />
+            </Component>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="AComponentGroupId">
+            <ComponentRef Id="cmpC6352196F8EAF63438ADFFCE02E38E41" />
+            <ComponentRef Id="cmp8766751BFC2EE62883217A85EBCC19E3" />
+            <ComponentRef Id="cmp60CA72B405C2BD6DAA4CE7A706B69031" />
+            <ComponentRef Id="cmp11C4AC539AFF7DB49AA733C4330737F0" />
+            <ComponentRef Id="cmpF6D452A0861CDD301D4C5F797A45F690" />
+        </ComponentGroup>
+    </Fragment>
+</Wix>

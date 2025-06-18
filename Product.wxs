@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="AULGK" Language="2052" Codepage="936" Version="1.0.0.0" Manufacturer="xfy2412" UpgradeCode="4D8E1D7D-F536-B4F4-F6A3-2C71945B38A6">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Languages="2052"/>
+		<MajorUpgrade DowngradeErrorMessage="已安装较新版本的 [ProductName]。" />
+		<MediaTemplate EmbedCab="yes" />
+
+		<Feature Id="ProductFeature" Title="AULGK" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+			<ComponentRef Id="DesktopShortcut" />
+			<ComponentRef Id="StartMenuShortcut" />
+		</Feature>
+		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+		<UIRef Id="WixUI_InstallDir" />
+		<WixVariable Id="WixUILicenseRtf" Value="License_zh-CN.rtf" />
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLDIR" Name="AULGK" />
+			</Directory>
+			<Directory Id="DesktopFolder" Name="Desktop" />
+			<Directory Id="ProgramMenuFolder">
+				<Directory Id="ApplicationProgramsFolder" Name="AULGK" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLDIR">
+			<!-- Main executable -->
+			<ComponentGroupRef Id="AComponentGroupId" />
+		</ComponentGroup>
+
+		<!-- Desktop Shortcut -->
+		<Component Id="DesktopShortcut" Guid="4D8E1D7D-F536-B4F4-F6A3-2C71945B38A6" Directory="DesktopFolder">
+			<Shortcut Id="DesktopShortcut" Name="AULGK" Target="[INSTALLDIR]AULGK.exe" WorkingDirectory="INSTALLDIR" />
+			<RegistryValue Root="HKCU" Key="Software\xfy2412\AULGK" Name="DesktopShortcut" Type="string" Value="1" KeyPath="yes" />
+		</Component>
+
+		<!-- Start Menu Shortcut -->
+		<Component Id="StartMenuShortcut" Guid="B046A66A-55A2-9EF5-D54A-A65743349A95" Directory="ApplicationProgramsFolder">
+			<Shortcut Id="StartMenuShortcut" Name="AULGK" Target="[INSTALLDIR]AULGK.exe" WorkingDirectory="INSTALLDIR" />
+			<RemoveFolder Id="ApplicationProgramsFolder" On="uninstall" />
+			<RegistryValue Root="HKCU" Key="Software\xfy2412\AULGK" Name="StartMenuShortcut" Type="string" Value="1" KeyPath="yes" />
+		</Component>
+	</Fragment>
+</Wix>
